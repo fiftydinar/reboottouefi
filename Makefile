@@ -20,7 +20,7 @@ compile-po: po/*.po
 $(NAME)@$(DOMAIN).zip: dist/extension.js
 	@cp src/metadata.json dist/
 	@$(MAKE) compile-po
-	@(cd dist && zip ../$(NAME)@$(DOMAIN).zip -9r .)
+	@(cd dist && zip ../$(NAME)@$(DOMAIN)-$(shell date +%Y%m%d).zip -9r .)
 
 pack: $(NAME)@$(DOMAIN).zip
 
@@ -31,4 +31,4 @@ install: $(NAME)@$(DOMAIN).zip
 	@mv dist ~/.local/share/gnome-shell/extensions/$(NAME)@$(DOMAIN)
 
 clean:
-	@rm -rf dist node_modules $(NAME)@$(DOMAIN).zip
+	@rm -rf dist node_modules $(NAME)@$(DOMAIN)-*.zip
