@@ -1,5 +1,6 @@
 NAME=reboottouefi
 DOMAIN=ubaygd.com
+BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
 .PHONY: all pack install clean
 
@@ -20,7 +21,7 @@ compile-po: po/*.po
 $(NAME)@$(DOMAIN).zip: dist/extension.js
 	@cp src/metadata.json dist/
 	@$(MAKE) compile-po
-	@(cd dist && zip ../$(NAME)@$(DOMAIN)-$(shell date +%Y%m%d).zip -9r .)
+	@(cd dist && zip ../$(NAME)@$(DOMAIN)-$(shell date +%Y%m%d)$(if $(filter dev,$(BRANCH)),-$(BRANCH)).zip -9r .)
 
 pack: $(NAME)@$(DOMAIN).zip
 
