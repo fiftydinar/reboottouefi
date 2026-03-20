@@ -3,52 +3,50 @@ name: Build and Release
 on:
   workflow_dispatch:
   push:
-    branches: [ "main", 'dev' ]
-    
+    branches: ['main', 'dev']
+
 env:
   NAME: reboottouefi
   DOMAIN: ubaygd.com
-  FILE_EXT: zip 
-
+  FILE_EXT: zip
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Install gettext
-              run: sudo apt-get install gettext
+      - name: Install gettext
+        run: sudo apt-get install gettext
 
-            - name: Build package
-              run: make pack
+      - name: Build package
+        run: make pack
 
-            - name: Upload Release Asset
-              uses: actions/upload-artifact@v6
-              with:
-                name: release-asset
-                path: "*.zip"
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload Release Asset
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-asset
+          path: '*.zip'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Create Tag
-              id: create_tag
-              uses: actions/create-release@v1.1.4
-              with:
-                tag_name: ${{ github.ref_name }}
-                release_name: Release ${{ github.ref_name }}
-                draft: false
-                prerelease: ${{ github.ref_name == 'dev' }}
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Tag
+        id: create_tag
+        uses: actions/create-release@v1.1.4
+        with:
+          tag_name: ${{ github.ref_name }}-${{ github.run_number }}
+          release_name: Release ${{ github.ref_name }}-${{ github.run_number }}
+          draft: false
+          prerelease: ${{ github.ref_name == 'dev' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-            # - name: Create Release
-            #   uses: softprops/action-gh-release@v2
-            #   with:
-            #     files: "*.zip"
-            #   env:
-            #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create Release
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     files: "*.zip"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
