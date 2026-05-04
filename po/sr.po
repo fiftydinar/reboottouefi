@@ -29,4 +29,4 @@ msgstr "Покрени"
 
 #: extension.js:154
 msgid "The system will restart automatically in %d seconds."
-msgstr "Систем ће се аутоматски покренути жа %d секунди."
+msgstr "Систем ће се аутоматски покренути за %d секунди."
