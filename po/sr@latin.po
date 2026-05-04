@@ -1,0 +1,32 @@
+# Reboot to UEFI GNOME Extension
+# fiftydinar <something@example.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-29 19:54+0100\n"
+"PO-Revision-Date: 2026-05-04 00:00+0000\n"
+"Last-Translator: fiftydinar <>\n"
+"Language-Team: Serbian (Latin) <>\n"
+"Language: sr@latin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : (n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2))\n"
+
+#: extension.js:63,122
+msgid "Restart to UEFI"
+msgstr "Pokreni u UEFI"
+
+#: extension.js:103
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: extension.js:112
+msgid "Restart"
+msgstr "Pokreni"
+
+#: extension.js:154
+msgid "The system will restart automatically in %d seconds."
+msgstr "Sistem će se automatski pokrenuti za %d sekundi."
