@@ -42,8 +42,8 @@ jobs:
         id: create_tag
         uses: actions/create-release@v1.1.4
         with:
-          tag_name: ${{ env.RELEASE_PREFIX }} ${{ steps.date.outputs.date }}
-          release_name: ${{ env.RELEASE_PREFIX }} ${{ steps.date.outputs.date }}
+          tag_name: ${{ env.name }}-${{ steps.date.outputs.date }}
+          release_name: '${{ env.RELEASE_PREFIX }} ${{ steps.date.outputs.date }}'
           draft: false
           # prerelease: ${{ github.ref_name == 'dev' }}
         env:
