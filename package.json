@@ -6,7 +6,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/example/my-extension.git"
+    "url": "git+https://github.com/UbayGD/reboottouefi.git"
   },
   "author": "UbayGD <aubay.glezdiaz@gmail.com>",
   "license": "GPL-3.0-only",
@@ -16,12 +16,12 @@
   "homepage": "https://github.com/UbayGD/reboottouefi",
   "sideEffects": false,
   "devDependencies": {
-    "eslint": "^10.4.0",
-    "eslint-plugin-jsdoc": "^62.9.0",
-    "typescript": "^6.0.3"
+    "eslint": "^10.8.1",
+    "eslint-plugin-jsdoc": "^64.1.0",
+    "typescript": "^7.0.2"
   },
   "dependencies": {
-    "@girs/gjs": "^4.0.0-rc.15",
-    "@girs/gnome-shell": "^50.0.0"
+    "@girs/gjs": "^4.1.0",
+    "@girs/gnome-shell": "^50.0.4"
   }
 }
