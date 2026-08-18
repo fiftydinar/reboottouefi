@@ -59,7 +59,7 @@ export default class RebootToUefiExtension extends Extension {
 
   private modifySystemItem(): void {
     this.menu =
-      panel.statusArea.quickSettings._system?.quickSettingsItems[0].menu;
+      panel.statusArea.quickSettings?._system?.quickSettingsItems[0].menu;
 
     this.proxy = Manager(
       Gio.DBus.system,
@@ -96,7 +96,7 @@ export default class RebootToUefiExtension extends Extension {
 
   private queueModifySystemItem(): void {
     this.sourceId = GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
-      if (!panel.statusArea.quickSettings._system) return GLib.SOURCE_CONTINUE;
+      if (!panel.statusArea.quickSettings?._system) return GLib.SOURCE_CONTINUE;
 
       this.modifySystemItem();
       return GLib.SOURCE_REMOVE;
@@ -104,7 +104,7 @@ export default class RebootToUefiExtension extends Extension {
   }
 
   enable() {
-    if (!panel.statusArea.quickSettings._system) {
+    if (!panel.statusArea.quickSettings?._system) {
       this.queueModifySystemItem();
     } else {
       this.modifySystemItem();
